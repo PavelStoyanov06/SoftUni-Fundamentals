@@ -7,3 +7,5 @@ Beware that this repo is mainly for testing purpouses!
 Available now:
 1. Basic Syntax
 2. Data Types and Variables
+
+In case you are wondering where the folder with files is - look no further than the Solutions folder!
