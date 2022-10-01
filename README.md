@@ -7,5 +7,7 @@ Beware that this repo is mainly for testing purpouses!
 Available now:
 1. Basic Syntax
 2. Data Types and Variables
+3. Arrays
 
 In case you are wondering where the folder with files is - look no further than the Solutions folder!
+*Added a snippets folder if I happen to make any!
