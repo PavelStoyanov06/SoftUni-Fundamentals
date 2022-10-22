@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+          <Title>Console ReadLine List</Title>
+          <Author>Pavel Stoyanov</Author>
+          <Description>Writes the entire ReadLine for a List.</Description>
+          <Shortcut>crl</Shortcut>
+        </Header>
+        <Snippet>
+          <Code Language="CSharp">
+            <![CDATA[List<$Var$> $Name$ = Console.ReadLine().Split($Split$).Select($Var$.Parse).ToList();]]>
+          </Code>
+          <Declarations>
+            <Literal>
+              <ID>Name</ID>
+              <ToolTip>Choose the name of the list.</ToolTip>
+              <Default>input</Default>
+            </Literal>
+            <Literal>
+              <ID>Var</ID>
+              <ToolTip>Choose the desired variable type.</ToolTip>
+              <Default>int</Default>
+            </Literal>
+            <Literal>
+              <ID>Split</ID>
+              <ToolTip>Choose the way you want to split the List.</ToolTip>
+              <Default></Default>
+            </Literal>
+          </Declarations>
+          <Imports>
+            <Import>
+              <Namespace>System.Collections.Generic</Namespace>
+            </Import>
+            <Import>
+              <Namespace>System.Linq</Namespace>
+            </Import>
+          </Imports>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

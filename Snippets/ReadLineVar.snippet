@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+      <Header>
+        <Title>Variable ReadLine</Title>
+        <Author>Pavel Stoyanov</Author>
+        <Description>Creates a ReadLine for variable types.</Description>
+        <Shortcut>crv</Shortcut>
+      </Header>
+      <Snippet>
+        <Code Language="CSharp">
+          <![CDATA[$Var$ $Name$ = $Var$.Parse(Console.ReadLine());]]>
+        </Code>
+        <Declarations>
+          <Literal>
+            <ID>Var</ID>
+            <ToolTip>Choose your variable type.</ToolTip>
+            <Default>int</Default>
+          </Literal>
+          <Literal>
+            <ID>Name</ID>
+            <ToolTip>Choose your variable name.</ToolTip>
+            <Default>input</Default>
+          </Literal>
+        </Declarations>
+      </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

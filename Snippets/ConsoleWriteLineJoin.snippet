@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+      <Header>
+        <Title>Console WriteLine Join</Title>
+        <Author>Pavel Stoyanov</Author>
+        <Description>Aims to output arrays and lists on a single line.</Description>
+        <Shortcut>cwj</Shortcut>
+      </Header>
+      <Snippet>
+        <Code Language="CSharp">
+          <![CDATA[Console.WriteLine(String.Join("$Joint$", $Structure$));]]>
+        </Code>
+        <Declarations>
+          <Literal>
+            <ID>Joint</ID>
+            <ToolTip>Choose the way you want to join your data structure.</ToolTip>
+            <Default></Default>
+          </Literal>
+          <Literal>
+            <ID>Structure</ID>
+            <ToolTip>Choose your data structure.</ToolTip>
+            <Default></Default>
+          </Literal>
+        </Declarations>
+      </Snippet>
+    </CodeSnippet>
+</CodeSnippets>
