@@ -9,6 +9,7 @@ Available now:
 2. Data Types and Variables
 3. Arrays
 4. Methods
+5. Lists
 
 In case you are wondering where the folder with files is - look no further than the Solutions folder!
 #Added a snippets folder if I happen to make any!
