@@ -8,101 +8,91 @@ namespace _10.SoftUniCoursePlanning
     {
         static void Main(string[] args)
         {
-            List<string> schedule = Console.ReadLine().Split(", ").ToList();
+            List<List<string>> schedule = new List<List<string>>();
+
+            string[] arr = Console.ReadLine().Split(", ");
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                schedule.Add(new List<string>() { arr[i] });
+            }
+
 
             string input = Console.ReadLine();
-            while (input != "course start")
+
+            while(input != "course start")
             {
-                string[] cmdArgs = input.Split(":").ToArray();
+                string[] cmdArgs = input.Split(":");
                 string cmd = cmdArgs[0];
 
                 if(cmd == "Add")
                 {
                     string lessonName = cmdArgs[1];
-                    if (!schedule.Contains(lessonName))
+                    if (schedule.All(lesson => lesson[0] != lessonName))
                     {
-                        schedule.Add(lessonName);
+                        schedule.Add(new List<string>() { lessonName });
                     }
                 }
                 else if(cmd == "Insert")
                 {
                     string lessonName = cmdArgs[1];
                     int index = int.Parse(cmdArgs[2].ToString());
-                    if (!schedule.Contains(lessonName))
+                    if(schedule.All(lesson => lesson[0] != lessonName))
                     {
-                        schedule.Insert(index, lessonName);
+                        schedule.Insert(index, new List<string> { lessonName });
                     }
                 }
                 else if(cmd == "Remove")
                 {
                     string lessonName = cmdArgs[1];
-                    if (schedule.Contains(lessonName))
+                    if(schedule.Any(lesson => lesson[0] == lessonName))
                     {
-                        schedule.Remove(lessonName);
+                        schedule = schedule.Where(lesson => lesson[0] != lessonName).ToList();
                     }
                 }
                 else if(cmd == "Swap")
                 {
-                    string firstLesson = cmdArgs[1];
-                    string secondLesson = cmdArgs[2];
+                    string lesson1 = cmdArgs[1];
+                    string lesson2 = cmdArgs[2];
 
-                    if(schedule.Contains(firstLesson) && schedule.Contains(secondLesson))
+                    if (schedule.Any(lesson => lesson[0] == lesson1) && schedule.Any(lesson => lesson[0] == lesson2))
                     {
-                        string tempName = firstLesson;
-                        schedule[schedule.IndexOf(firstLesson)] = secondLesson;
-                        if (schedule.Contains(secondLesson + "-Exercise"))
-                        {
-                            schedule.RemoveAt(schedule.IndexOf(secondLesson + "-Exercise"));
-                            if (schedule.IndexOf(secondLesson) >= schedule.Count - 1)
-                            {
-                                schedule.Add(secondLesson + "-Exercise");
-                            }
-                            else
-                            {
-                                schedule.Insert(schedule.IndexOf(secondLesson) + 1, secondLesson + "-Exercise");
-                            }
-                        }
-                        schedule[schedule.IndexOf(secondLesson)] = tempName;
-                        if (schedule.Contains(tempName + "-Exercise"))
-                        {
-                            schedule.RemoveAt(schedule.IndexOf(tempName + "-Exercise"));
-                            if (schedule.IndexOf(tempName) >= schedule.Count - 1)
-                            {
-                                schedule.Add(tempName + "-Exercise");
-                            }
-                            else
-                            {
-                                schedule.Insert(schedule.IndexOf(tempName) + 1, tempName + "-Exercise");
-                            }
-                        }
+                        int index1 = schedule.IndexOf(schedule.Find(lesson => lesson[0] == lesson1));
+                        int index2 = schedule.IndexOf(schedule.Find(lesson => lesson[0] == lesson2));
+
+                        List<string> tempLesson = schedule[index1];
+                        schedule[index1] = schedule[index2];
+                        schedule[index2] = tempLesson;
                     }
                 }
                 else if(cmd == "Exercise")
                 {
                     string lessonName = cmdArgs[1];
-                    string lessonExercise = lessonName + "-Exercise";
-
-                    if (!schedule.Contains(lessonExercise))
+                    
+                    if(schedule.All(lesson => lesson[0] != lessonName))
                     {
-                        if (!schedule.Contains(lessonName))
+                        string exercise = $"{lessonName}-Exercise";
+                        schedule.Add(new List<string>() { lessonName, exercise });
+                    }
+                    else if(schedule.Any(lesson => lesson[0] == lessonName))
+                    {
+                        string exercise = $"{lessonName}-Exercise";
+                        if(schedule[schedule.IndexOf(schedule.Find(lesson => lesson[0] == lessonName))].Count == 1)
                         {
-                            schedule.Add(lessonName);
-                        }
-                        if(schedule.IndexOf(lessonName) + 1 >= schedule.Count - 1)
-                        {
-                            schedule.Add(lessonExercise);
-                        }
-                        else
-                        {
-                            schedule.Insert(schedule.IndexOf(lessonName) + 1, lessonExercise);
+                            schedule[schedule.IndexOf(schedule.Find(lesson => lesson[0] == lessonName))].Add(exercise);
                         }
                     }
                 }
                 input = Console.ReadLine();
             }
+            int num = 1;
             for (int i = 0; i < schedule.Count; i++)
             {
-                Console.WriteLine($"{i + 1}.{schedule[i]}");
+                for (int j = 0; j < schedule[i].Count; j++)
+                {
+                    Console.WriteLine($"{num}.{schedule[i][j]}");
+                    num++;
+                }
             }
         }
     }
