@@ -12,6 +12,7 @@ Available now:
 5. Lists
 6. Objects and Classes
 7. Associative Arrays
+8. Bitwise Operations
 
 In case you are wondering where the folder with files is - look no further than the Solutions folder!
 #Added a snippets folder if I happen to make any!
