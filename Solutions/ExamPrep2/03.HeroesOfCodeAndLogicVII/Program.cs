@@ -7,6 +7,7 @@ namespace _03.HeroesOfCodeAndLogicVII
     {
         static void Main(string[] args)
         {
+            Console.WriteLine(c);
             int n = int.Parse(Console.ReadLine());
             var heroes = new Dictionary<string, List<int>>();
             for (int i = 0; i < n; i++)
